@@ -31,6 +31,22 @@ function kt {
   kn traefik "$@"
 }
 
+function reload {
+  pushd ~ > /dev/null
+  source ./.bash_profile
+  popd > /dev/null
+
+  for a in "$@"; do
+    "reload-$a"
+  done
+}
+
+function reload-gpg {
+  export GPG_TTY=$(tty)
+  gpg-connect-agent updatestartuptty /bye >/dev/null
+  gpg --card-status
+}
+
 function adjust_ps1 {
   perl -pe 's{(\\\$)([^\$]+?)$}{$1$2}s'
 }
