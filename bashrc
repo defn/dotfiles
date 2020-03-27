@@ -11,16 +11,16 @@ function gs {
 }
 
 function k {
-  kubectl "$@"
+  kubectl --context kind-kind "$@"
 }
 
 function ks {
-  kubectl -n kube-system "$@"
+  k -n kube-system "$@"
 }
 
 function kn {
   ns="$1"; shift
-  kubectl -n "${ns}" "$@"
+  k -n "${ns}" "$@"
 }
 
 function km {
@@ -29,6 +29,27 @@ function km {
 
 function kt {
   kn traefik "$@"
+}
+
+function m {
+  kubectl --context kind-mind "$@"
+}
+
+function ms {
+  m -n kube-system "$@"
+}
+
+function mn {
+  ns="$1"; shift
+  m -n "${ns}" "$@"
+}
+
+function mm {
+  mn metallb-system "$@"
+}
+
+function mt {
+  mn traefik "$@"
 }
 
 function reload {
