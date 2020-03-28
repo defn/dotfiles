@@ -12,9 +12,11 @@ work
 .gnupg/pubring.kbx
 .gnupg/trustdb.gpg
 
-# virtualenv
+# python
 venv
+virtualenv
 __pycache__/
+.python_history
 
 # macos
 Applications/
