@@ -3,15 +3,13 @@ SHELL := /bin/bash
 update:
 	git pull && git submodule update --init
 	cd .dotfiles && git pull && git submodule update --init
+	if [[ ! -d .vim ]]; then git clone https://github.com/imma/junas .vim; fi
 	cd .vim && git pull && git submodule update --init
 
 upgrade:
-	$(MAKE) update || true
 	$(MAKE) dotfiles
 
 dotfiles:
-	git clone https://github.com/imma/junas .vim || true
-	cd .vim && git submodule update --init
 	ln -nfs .dotfiles/vimrc .vimrc
 	ln -nfs .dotfiles/bashrc .bashrc.site
 	ln -nfs .dotfiles/gitconfig .gitconfig
