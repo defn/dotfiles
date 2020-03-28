@@ -31,6 +31,41 @@ function kt {
   kn traefik "$@"
 }
 
+function ka {
+  kn argo "$@"
+}
+
+function ken {
+  local ns="$1"; shift
+  local label="$1"; shift
+
+  if [[ "$#" == 0 ]]; then
+    set -- bash
+  fi
+
+  kn "$ns" exec -ti $(kn "$ns" get pod -o jsonpath='{.items[0].metadata.name}' -l "$label") -- "$@"
+}
+
+function kes {
+  ken kube-system "$@"
+}
+
+function ket {
+  ken traefik "$@"
+}
+
+function kem {
+  ken metallb-system "$@"
+}
+
+function kea {
+  ken argo "$@"
+}
+
+function ke {
+  ken default "$@"
+}
+
 function m {
   kubectl --context kind-mind "$@"
 }
@@ -50,6 +85,10 @@ function mm {
 
 function mt {
   mn traefik "$@"
+}
+
+function ma {
+  mn argo "$@"
 }
 
 function reload {
