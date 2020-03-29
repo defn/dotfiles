@@ -7,9 +7,6 @@ update:
 	cd .vim && git pull && git submodule update --init
 
 upgrade:
-	$(MAKE) dotfiles
-
-dotfiles:
 	ln -nfs .dotfiles/vimrc .vimrc
 	ln -nfs .dotfiles/bashrc .bashrc.site
 	ln -nfs .dotfiles/gitconfig .gitconfig
@@ -23,10 +20,10 @@ dotfiles:
 	mkdir -p .aws
 	if [[ -f /efs/config/aws/config ]]; then ln -nfs /efs/config/aws/config .aws/config; fi
 	if [[ -f /efs/config/pass ]]; then ln -nfs /efs/config/pass /app/src/.password-store; fi
+	rm -f /usr/local/bin/kubectl
 	source ./.bash_profile && $(MAKE) install
 
 install:
-	rm -f /usr/local/bin/kubectl
 	brew bundle
 	asdf install
 	python -m venv venv
