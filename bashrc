@@ -71,10 +71,6 @@ function kdn {
   local label="$1"; shift
   local image="$1"; shift
 
-  if [[ "$#" == 0 ]]; then
-    set -- bash
-  fi
-
   kn "$ns" alpha debug -it --image="$image" $(kn "$ns" get pod -o jsonpath='{.items[0].metadata.name}' -l "$label") "$@"
 }
 
