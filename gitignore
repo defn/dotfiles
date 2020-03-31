@@ -1,5 +1,4 @@
 # dotfiles
-Makefile
 work
 .dotfiles
 .gitconfig
@@ -17,6 +16,7 @@ venv
 virtualenv
 __pycache__/
 .python_history
+.ansible_galaxy
 
 # macos
 Applications/

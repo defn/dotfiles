@@ -1,17 +1,12 @@
-SHELL := /bin/bash
-
-update:
-	git pull && git submodule update --init
-	cd .dotfiles && git pull && git submodule update --init
+dotfiles_update:
 	if [[ ! -d .vim ]]; then git clone https://github.com/imma/junas .vim; fi
 	cd .vim && git pull && git submodule update --init
 
-upgrade:
+dotfiles_upgrade:
 	ln -nfs .dotfiles/vimrc .vimrc
 	ln -nfs .dotfiles/bashrc .bashrc.site
 	ln -nfs .dotfiles/gitconfig .gitconfig
 	ln -nfs .dotfiles/gitignore .gitignore
-	ln -nfs .dotfiles/Makefile Makefile
 	mkdir -p .ssh && chmod 700 .ssh
 	chmod 600 .dotfiles/authorized_keys & ln -nfs ../.dotfiles/authorized_keys .ssh/authorized_keys
 	mkdir -p .gnupg && chmod 700 .gnupg
@@ -21,11 +16,6 @@ upgrade:
 	if [[ -f /efs/config/aws/config ]]; then ln -nfs /efs/config/aws/config .aws/config; fi
 	if [[ -f /efs/config/pass ]]; then ln -nfs /efs/config/pass /app/src/.password-store; fi
 	rm -f /usr/local/bin/kubectl
-	source ./.bash_profile && $(MAKE) install
 
-install:
-	brew bundle
-	asdf install
-	python -m venv venv
-	source venv/bin/activate && pip install --upgrade pip
-	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
+dotfiles_install:
+	@true
