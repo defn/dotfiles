@@ -1,8 +1,10 @@
-dotfiles_update:
+SHELL := bash
+
+update:
 	if [[ ! -d .vim ]]; then git clone https://github.com/imma/junas .vim; fi
 	cd .vim && git pull && git submodule update --init
 
-dotfiles_upgrade:
+upgrade:
 	ln -nfs .dotfiles/vimrc .vimrc
 	ln -nfs .dotfiles/bashrc .bashrc.site
 	ln -nfs .dotfiles/gitconfig .gitconfig
@@ -17,5 +19,5 @@ dotfiles_upgrade:
 	if [[ -f /efs/config/pass ]]; then ln -nfs /efs/config/pass /app/src/.password-store; fi
 	rm -f /usr/local/bin/kubectl
 
-dotfiles_install:
+install:
 	@true
