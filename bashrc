@@ -10,6 +10,10 @@ function pc {
   command pre-commit "$@"
 }
 
+function ga {
+  command git add -u "$@"
+}
+
 function gs {
   git status -sb "$@"
 }
