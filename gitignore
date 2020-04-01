@@ -51,3 +51,4 @@ Brewfile.lock.json
 .lesshst
 .cpan/
 .irssi/
+.gem/
