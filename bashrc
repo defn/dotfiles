@@ -6,6 +6,10 @@ function vi {
   fi
 }
 
+function pc {
+  command pre-commit "$@"
+}
+
 function gs {
   git status -sb "$@"
 }
