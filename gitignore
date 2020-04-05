@@ -55,3 +55,4 @@ Brewfile.lock.json
 .env
 .oracle_jre_usage/
 .bash_sessions/
+.bash_logout

@@ -18,6 +18,7 @@ upgrade:
 	if [[ -f /efs/config/aws/config ]]; then ln -nfs /efs/config/aws/config .aws/config; fi
 	if [[ -f /efs/config/pass ]]; then ln -nfs /efs/config/pass /app/src/.password-store; fi
 	rm -f /usr/local/bin/kubectl
+	rm -f .profile
 
 install:
 	@true
