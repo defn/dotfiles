@@ -10,7 +10,7 @@ upgrade:
 	ln -nfs .dotfiles/gitconfig .gitconfig
 	ln -nfs .dotfiles/gitignore .gitignore
 	mkdir -p .ssh && chmod 700 .ssh
-	chmod 600 .dotfiles/authorized_keys & ln -nfs ../.dotfiles/authorized_keys .ssh/authorized_keys
+	(cat .dotfiles/authorized_keys .ssh/authorized_keys 2>/dev/null | sort) > .ssh/authorized_keys.1 && rm -f .ssh/authorized_keys && mv .ssh/authorized_keys.1 .ssh/authorized_keys
 	mkdir -p .gnupg && chmod 700 .gnupg
 	ln -nfs ../.dotfiles/gnupg/pubring.kbx .gnupg/pubring.kbx
 	ln -nfs ../.dotfiles/gnupg/trustdb.gpg .gnupg/trustdb.gpg
