@@ -56,3 +56,4 @@ Brewfile.lock.json
 .oracle_jre_usage/
 .bash_sessions/
 .bash_logout
+.asdf
