@@ -44,7 +44,7 @@ Brewfile.lock.json
 .bash_history
 .zsh_history
 .babel.json
-.config/
+.config
 .kube/
 .m2/
 .npm/
