@@ -17,6 +17,7 @@ virtualenv
 __pycache__/
 .python_history
 .ansible_galaxy
+.ipython
 
 # macos
 Applications/
