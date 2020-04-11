@@ -1,9 +1,16 @@
 function vi {
-  if type -P vim >/dev/null; then
-    command vim "$@"
-  else
-    command vi "$@"
-  fi
+  case "$(uname -s)" in
+    Darwin)
+      docker run -it --rm -v "$HOME:$HOME" -w "${PWD}" -e "HOME=$HOME" defn/spacenghiem "$@"
+      ;;
+    *)
+      if type -P vim >/dev/null; then
+        command vim "$@"
+      else
+        command vi "$@"
+      fi
+      ;;
+  esac
 }
 
 function pc {
