@@ -6,7 +6,6 @@ work
 .bashrc.site
 .password-store
 .vim
-.vimrc
 .SpaceVim.d/
 .ssh
 .gnupg/pubring.kbx
@@ -61,3 +60,4 @@ Brewfile.lock.json
 .bash_logout
 .asdf
 .local/
+.cups/
