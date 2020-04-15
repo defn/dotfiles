@@ -19,6 +19,10 @@ __pycache__/
 .ansible_galaxy
 .ipython
 
+# clojures
+.clojure/
+.gitlibs/
+
 # macos
 Applications/
 Desktop/
