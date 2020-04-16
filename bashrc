@@ -25,8 +25,24 @@ function gs {
   git status -sb "$@"
 }
 
+function zt0 {
+  _K_CONTEXT=zt0
+  if [[ "$#" -gt 0 ]]; then
+    "$@"
+    unset _K_CONTEXT
+  fi
+}
+
+function zt1 {
+  _K_CONTEXT=zt1
+  if [[ "$#" -gt 0 ]]; then
+    "$@"
+    unset _K_CONTEXT
+  fi
+}
+
 function k {
-  kubectl --context kind-kind "$@"
+  kubectl --context ${_K_CONTEXT:-kind-kind} "$@"
 }
 
 function ks {
@@ -44,6 +60,10 @@ function km {
 
 function kt {
   kn traefik "$@"
+}
+
+function kx {
+  kn ingress-nginx "$@"
 }
 
 function ka {
@@ -67,6 +87,10 @@ function kes {
 
 function ket {
   ken traefik "$@"
+}
+
+function kex {
+  ken kn ingress-nginx "$@"
 }
 
 function kem {
@@ -95,31 +119,6 @@ function kd {
 
 function kds {
   kdn kube-system "$@"
-}
-
-function m {
-  kubectl --context kind-mind "$@"
-}
-
-function ms {
-  m -n kube-system "$@"
-}
-
-function mn {
-  ns="$1"; shift
-  m -n "${ns}" "$@"
-}
-
-function mm {
-  mn metallb-system "$@"
-}
-
-function mt {
-  mn traefik "$@"
-}
-
-function ma {
-  mn argo "$@"
 }
 
 function reload {
@@ -201,6 +200,8 @@ export AWS_OKTA_MFA_PROVIDER=OKTA
 export AWS_OKTA_MFA_FACTOR_TYPE=push
 
 export NODEJS_CHECK_SIGNATURES=no
+
+export KUBECONFIG=$HOME/.kube/config:$HOME/.kube/zt0.conf:$HOME/.kube/zt1.conf
 
 export TERM=xterm-256color
 export TERM_PROGRAM=iTerm.app
