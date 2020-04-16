@@ -26,18 +26,16 @@ function gs {
 }
 
 function zt0 {
-  _K_CONTEXT=zt0
+  export _K_CONTEXT=zt0
   if [[ "$#" -gt 0 ]]; then
     "$@"
-    unset _K_CONTEXT
   fi
 }
 
 function zt1 {
-  _K_CONTEXT=zt1
+  export _K_CONTEXT=zt1
   if [[ "$#" -gt 0 ]]; then
     "$@"
-    unset _K_CONTEXT
   fi
 }
 
