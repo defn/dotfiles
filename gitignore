@@ -19,11 +19,14 @@ __pycache__/
 .ansible_galaxy
 .ipython
 
-# clojures
+# clojure
 .clojure/
 .gitlibs/
 .cljs/
 .clojure_history
+
+# nodejs
+node_modules
 
 # macos
 Applications/
@@ -68,3 +71,10 @@ Brewfile.lock.json
 .local/
 .cups/
 data/
+
+# cypress
+cypress/plugins/
+cypress/support/
+cypress/videos/
+cypress/fixtures/
+.pki
