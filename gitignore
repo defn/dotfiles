@@ -67,3 +67,4 @@ Brewfile.lock.json
 .asdf
 .local/
 .cups/
+data/
