@@ -13,33 +13,6 @@ function vi {
   esac
 }
 
-function zt {
-  local nm="$1"; shift
-
-  export _K_CONTEXT="${nm}"
-  if [[ "$#" -gt 0 ]]; then
-    case "$1" in
-      shell)
-        multipass shell "${nm}"
-        ;;
-      exec)
-        multipass exec "${nm}" -- "$@"
-        ;;
-      *)
-        "$@"
-        ;;
-    esac
-  fi
-}
-
-function zt0 {
-  zt zt0 "$@"
-}
-
-function zt1 {
-  zt zt1 "$@"
-}
-
 function reload {
   pushd ~ > /dev/null
   source ./.bash_profile
@@ -121,6 +94,7 @@ export AWS_OKTA_MFA_FACTOR_TYPE=push
 export NODEJS_CHECK_SIGNATURES=no
 
 export KUBECONFIG=$HOME/.kube/config:$HOME/.kube/zt0.conf:$HOME/.kube/zt1.conf
+export KUBECTX_IGNORE_FZF=1
 
 export TERM=xterm-256color
 export TERM_PROGRAM=iTerm.app
