@@ -5,8 +5,8 @@ work
 .aws/config
 .bashrc.site
 .password-store
-.vim
 .SpaceVim.d/
+.vim/.netrwhist
 .ssh
 .gnupg/pubring.kbx
 .gnupg/trustdb.gpg
@@ -53,6 +53,7 @@ Brewfile.lock.json
 .zsh_history
 .babel.json
 .config/*
+.config/nvim/.netrwhist
 !.config/nvim
 .kube/
 .m2/
