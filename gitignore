@@ -72,6 +72,7 @@ Brewfile.lock.json
 .local/
 .cups/
 data/
+tmp/
 
 # cypress
 cypress/plugins/
