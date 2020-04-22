@@ -96,6 +96,8 @@ export NODEJS_CHECK_SIGNATURES=no
 export KUBECONFIG=$HOME/.kube/config:$HOME/.kube/zt0.conf:$HOME/.kube/zt1.conf
 export KUBECTX_IGNORE_FZF=1
 
+export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+
 export TERM=xterm-256color
 export TERM_PROGRAM=iTerm.app
 
