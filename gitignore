@@ -73,6 +73,7 @@ Brewfile.lock.json
 .cups/
 data/
 tmp/
+.cookiecutter_replay/
 
 # cypress
 cypress/plugins/
@@ -80,3 +81,4 @@ cypress/support/
 cypress/videos/
 cypress/fixtures/
 .pki
+
