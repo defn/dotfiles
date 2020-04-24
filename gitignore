@@ -11,6 +11,7 @@ work
 .gnupg/pubring.kbx
 .gnupg/trustdb.gpg
 .dotfiles-repo
+.gnupg/S.gpg-agent
 
 # python
 venv
