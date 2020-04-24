@@ -1,16 +1,9 @@
 function vi {
-  case "$(uname -s)" in
-    Darwin)
-      docker run -it --rm -v "$HOME:$HOME" -w "${PWD}" -e "HOME=$HOME" defn/spacenghiem "$@"
-      ;;
-    *)
-      if type -P vim >/dev/null; then
-        command vim "$@"
-      else
-        command vi "$@"
-      fi
-      ;;
-  esac
+  if type -P vim >/dev/null; then
+    command vim "$@"
+  else
+    command vi "$@"
+  fi
 }
 
 function reload {
