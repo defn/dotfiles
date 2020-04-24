@@ -10,6 +10,7 @@ work
 .ssh
 .gnupg/pubring.kbx
 .gnupg/trustdb.gpg
+.dotfiles-repo
 
 # python
 venv
