@@ -76,6 +76,7 @@ Brewfile.lock.json
 data/
 tmp/
 .cookiecutter_replay/
+.cloudflared
 
 # cypress
 cypress/plugins/
