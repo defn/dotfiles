@@ -86,7 +86,6 @@ export AWS_OKTA_MFA_FACTOR_TYPE=push
 
 export NODEJS_CHECK_SIGNATURES=no
 
-export KUBECONFIG=$HOME/.kube/config:$HOME/.kube/zt0.conf:$HOME/.kube/zt1.conf
 export KUBECTX_IGNORE_FZF=1
 
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
