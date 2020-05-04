@@ -78,6 +78,7 @@ tmp/
 .cookiecutter_replay/
 .cloudflared
 .vault-token
+.caddy
 
 # cypress
 cypress/plugins/
