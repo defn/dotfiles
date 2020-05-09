@@ -84,6 +84,8 @@ export AWS_OKTA_MFA_PROVIDER=OKTA
 #AWS_OKTA_MFA_FACTOR_TYPE=token:hardware
 export AWS_OKTA_MFA_FACTOR_TYPE=push
 
+export VAULT_ADDR=https://vault.whoa.bot
+
 export NODEJS_CHECK_SIGNATURES=no
 
 export KUBECTX_IGNORE_FZF=1
