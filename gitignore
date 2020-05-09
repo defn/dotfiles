@@ -29,6 +29,7 @@ __pycache__/
 
 # nodejs
 node_modules
+.node_repl_history
 
 # macos
 Applications/
