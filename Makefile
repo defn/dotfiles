@@ -8,6 +8,7 @@ upgrade:
 	ln -nfs .dotfiles/gitconfig .gitconfig
 	ln -nfs .dotfiles/gitignore .gitignore
 	mkdir -p .ssh && chmod 700 .ssh
+	echo "@cert-authority * $(shell cat .dotfiles/trusted-user-ca-keys.pem)"  >> .ssh/known_hosts
 	mkdir -p .gnupg && chmod 700 .gnupg
 	ln -nfs ../.dotfiles/gnupg/pubring.kbx .gnupg/pubring.kbx
 	ln -nfs ../.dotfiles/gnupg/trustdb.gpg .gnupg/trustdb.gpg
