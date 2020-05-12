@@ -30,6 +30,7 @@ __pycache__/
 # nodejs
 node_modules
 .node_repl_history
+.pkg-cache
 
 # macos
 Applications/
