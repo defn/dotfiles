@@ -15,6 +15,7 @@ upgrade:
 	mkdir -p .aws
 	if [[ -f /efs/config/aws/config ]]; then ln -nfs /efs/config/aws/config .aws/config; fi
 	if [[ -f /efs/config/pass ]]; then ln -nfs /efs/config/pass /app/src/.password-store; fi
+	if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
 	rm -f /usr/local/bin/kubectl
 	rm -f .profile
 
