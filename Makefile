@@ -16,6 +16,13 @@ upgrade:
 	if [[ -f /efs/config/aws/config ]]; then ln -nfs /efs/config/aws/config .aws/config; fi
 	if [[ -f /efs/config/pass ]]; then ln -nfs /efs/config/pass /app/src/.password-store; fi
 	if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper || sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
+	(cat .docker/config.json 2>/dev/null || echo '{}') | jq -S '. + {credsStore: "pass"}' > .docker/config.json.1
+	mv .docker/config.json.1 .docker/config.json
+	if test "$(shell uname -s)" = "Linux"; then \
+		if ! test -x /usr/local/bin/docker-credential-pass; then \
+			(cd /usr/local/bin && curl -sSL https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz | sudo tar xvfz -; chmod 755 docker-credential-pass); \
+		fi; \
+	fi
 	rm -f /usr/local/bin/kubectl
 	rm -f .profile
 
