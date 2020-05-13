@@ -20,7 +20,7 @@ upgrade:
 	mv .docker/config.json.1 .docker/config.json
 	if test "$(shell uname -s)" = "Linux"; then \
 		if ! test -x /usr/local/bin/docker-credential-pass; then \
-			(cd /usr/local/bin && curl -sSL https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz | sudo tar xvfz -; chmod 755 docker-credential-pass); \
+			(cd /usr/local/bin && curl -sSL https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz | sudo tar xvfz -; sudo chmod 755 docker-credential-pass); \
 		fi; \
 	fi
 	rm -f /usr/local/bin/kubectl
