@@ -6,6 +6,27 @@ function vi {
   fi
 }
 
+function profile {
+  export AWS_PROFILE="$1"
+}
+
+function renew {
+  eval $(aws-okta env "${AWS_PROFILE#sre-}")
+}
+
+function reset {
+  unset \
+    AWS_ACCESS_KEY_ID \
+    AWS_OKTA_ASSUMED_ROLE \
+    AWS_OKTA_ASSUMED_ROLE_ARN \
+    AWS_OKTA_PROFILE \
+    AWS_OKTA_SESSION_EXPIRATION \
+    AWS_REGION \
+    AWS_SECRET_ACCESS_KEY \
+    AWS_SECURITY_TOKEN \
+    AWS_SESSION_TOKEN
+}
+
 function reload {
   pushd ~ > /dev/null
   source ./.bash_profile
