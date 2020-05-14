@@ -31,20 +31,16 @@ function render_ps1 {
   
   export PS1_VAR=
 
-  if [[ -n "${_CHM_USER:-}" ]]; then
-    PS1_VAR="${_CHM_USER%%.*}${PS1_VAR:+ ${PS1_VAR}}"
-  fi
-
-  local nm_profile="${AWS_OKTA_PROFILE}"
+  local nm_profile="${AWS_PROFILE}"
   if [[ -n "${nm_profile}" ]]; then
     if [[ -n "${AWS_OKTA_SESSION_EXPIRATION:-}" ]]; then
       local time_left="$(( AWS_OKTA_SESSION_EXPIRATION - $(date +%s) ))"
       if [[ "${time_left}" -lt 0 ]]; then
         time_left=""
       fi
-      PS1_VAR="${PS1_VAR:+${PS1_VAR}}@${nm_profile}${_CHM_CONTEXT:+:${_CHM_CONTEXT}}${time_left:+ ${time_left}}"
+      PS1_VAR="${PS1_VAR:+${PS1_VAR}}@${nm_profile}${time_left:+ ${time_left}}"
     else
-      PS1_VAR="${PS1_VAR:+${PS1_VAR}}@${nm_profile}${_CHM_CONTEXT:+:${_CHM_CONTEXT}}"
+      PS1_VAR="${PS1_VAR:+${PS1_VAR}}@${nm_profile}"
     fi
 
     if [[ -n "${AWS_DEFAULT_REGION:-}" ]]; then
