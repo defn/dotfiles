@@ -3,6 +3,7 @@ work
 .dotfiles
 .gitconfig
 .aws/config
+.aws/cli/cache
 .bashrc.site
 .password-store
 .SpaceVim.d/
