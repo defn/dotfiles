@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
 function _cm {
-  true
+  case "${1:-}" in
+    whoami)
+      aws sts get-caller-identity
+      ;;
+    *)
+      echo "unknown: $@" 1>&2
+      ;;
+  esac
 }
