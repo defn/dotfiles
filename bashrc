@@ -105,3 +105,7 @@ else
   export EDITOR="$(which vi)"
 fi
 
+function cm {
+  source ~/.dotfiles/.cmrc
+  _cm "$@"
+}
