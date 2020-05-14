@@ -80,6 +80,7 @@ export AWS_OKTA_MFA_PROVIDER=OKTA
 #AWS_OKTA_MFA_FACTOR_TYPE=token:hardware
 export AWS_OKTA_MFA_FACTOR_TYPE=push
 
+export AWS_SDK_LOAD_CONFIG=1
 export AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-us-east-1}"
 
 export VAULT_ADDR=https://vault.whoa.bot
