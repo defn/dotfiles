@@ -11,7 +11,10 @@ function profile {
 }
 
 function renew {
-  eval $(aws-okta env "${AWS_PROFILE#sre-}")
+  if [[ -n "${1:-}" ]]; then
+    profile "$1"
+  fi
+  eval $(aws-okta env "aws-${AWS_PROFILE}")
 }
 
 function reset {
@@ -21,7 +24,6 @@ function reset {
     AWS_OKTA_ASSUMED_ROLE_ARN \
     AWS_OKTA_PROFILE \
     AWS_OKTA_SESSION_EXPIRATION \
-    AWS_REGION \
     AWS_SECRET_ACCESS_KEY \
     AWS_SECURITY_TOKEN \
     AWS_SESSION_TOKEN
@@ -47,6 +49,18 @@ function adjust_ps1 {
   perl -pe 's{(\\\$)([^\$]+?)$}{$1$2}s'
 }
 
+function expired {
+  time_left=
+  if [[ -n "${AWS_OKTA_SESSION_EXPIRATION:-}" ]]; then
+    time_left="$(( AWS_OKTA_SESSION_EXPIRATION - $(date +%s) ))"
+    if [[ "${time_left}" -lt 0 ]]; then
+      return 1
+    fi
+  fi
+
+  return 0
+}
+
 function render_ps1 {
   local ec="$?"
   
@@ -55,17 +69,16 @@ function render_ps1 {
   local nm_profile="${AWS_PROFILE}"
   if [[ -n "${nm_profile}" ]]; then
     if [[ -n "${AWS_OKTA_SESSION_EXPIRATION:-}" ]]; then
-      local time_left="$(( AWS_OKTA_SESSION_EXPIRATION - $(date +%s) ))"
-      if [[ "${time_left}" -lt 0 ]]; then
-        time_left=""
+      if expired; then
+        reset
       fi
       PS1_VAR="${PS1_VAR:+${PS1_VAR}}@${nm_profile}${time_left:+ ${time_left}}"
     else
       PS1_VAR="${PS1_VAR:+${PS1_VAR}}@${nm_profile}"
     fi
 
-    if [[ -n "${AWS_DEFAULT_REGION:-}" ]]; then
-      PS1_VAR="${PS1_VAR:+${PS1_VAR}} ${AWS_DEFAULT_REGION}"
+    if [[ -n "${AWS_REGION:-}" ]]; then
+      PS1_VAR="${PS1_VAR:+${PS1_VAR}} ${AWS_REGION}"
     fi
   fi
 
@@ -102,7 +115,7 @@ export AWS_OKTA_MFA_PROVIDER=OKTA
 export AWS_OKTA_MFA_FACTOR_TYPE=push
 
 export AWS_SDK_LOAD_CONFIG=1
-export AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-us-east-1}"
+export AWS_REGION="${AWS_REGION:-us-east-1}"
 
 export VAULT_ADDR=https://vault.whoa.bot
 
