@@ -54,11 +54,11 @@ function expired {
   if [[ -n "${AWS_OKTA_SESSION_EXPIRATION:-}" ]]; then
     time_left="$(( AWS_OKTA_SESSION_EXPIRATION - $(date +%s) ))"
     if [[ "${time_left}" -lt 0 ]]; then
-      return 1
+      return 0
     fi
   fi
 
-  return 0
+  return 1
 }
 
 function render_ps1 {
@@ -69,9 +69,6 @@ function render_ps1 {
   local nm_profile="${AWS_PROFILE}"
   if [[ -n "${nm_profile}" ]]; then
     if [[ -n "${AWS_OKTA_SESSION_EXPIRATION:-}" ]]; then
-      if expired; then
-        reset
-      fi
       PS1_VAR="${PS1_VAR:+${PS1_VAR}}@${nm_profile}${time_left:+ ${time_left}}"
     else
       PS1_VAR="${PS1_VAR:+${PS1_VAR}}@${nm_profile}"
@@ -94,6 +91,9 @@ function render_ps1 {
 }
 
 function update_ps1 {
+  if expired; then
+    reset
+  fi
   PS1="$(render_ps1 | adjust_ps1)"
 }
 
@@ -118,6 +118,7 @@ export AWS_SDK_LOAD_CONFIG=1
 export AWS_REGION="${AWS_REGION:-us-east-1}"
 
 export VAULT_ADDR=https://vault.whoa.bot
+export CONSUL_HTTP_ADDR=https://consul.whoa.bot
 
 export NODEJS_CHECK_SIGNATURES=no
 
