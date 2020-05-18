@@ -13,8 +13,6 @@ upgrade:
 	ln -nfs ../.dotfiles/gnupg/pubring.kbx .gnupg/pubring.kbx
 	ln -nfs ../.dotfiles/gnupg/trustdb.gpg .gnupg/trustdb.gpg
 	mkdir -p .aws
-	if [[ -f /efs/config/aws/config ]]; then ln -nfs /efs/config/aws/config .aws/config; fi
-	if [[ -f /efs/config/pass ]]; then ln -nfs /efs/config/pass /app/src/.password-store; fi
 	if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper || sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
 	(cat .docker/config.json 2>/dev/null || echo '{}') | jq -S '. + {credsStore: "pass"}' > .docker/config.json.1
 	mv .docker/config.json.1 .docker/config.json
