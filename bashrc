@@ -8,6 +8,10 @@ function vi {
 
 function profile {
   export AWS_PROFILE="$1"
+  if [[ -n "${2:-}" ]]; then
+    export AWS_DEFAULT_REGION="$2"
+    export AWS_REGION="$2"
+  fi
 }
 
 function renew {
