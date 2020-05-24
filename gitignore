@@ -82,6 +82,7 @@ tmp/
 .cloudflared
 .vault-token
 .caddy
+.cookiecutters/
 
 # cypress
 cypress/plugins/
