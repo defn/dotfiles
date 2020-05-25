@@ -122,8 +122,8 @@ export AWS_SDK_LOAD_CONFIG=1
 export AWS_REGION="${AWS_REGION:-us-east-1}"
 export AWS_DEFAULT_REGION="${AWS_REGION:-${AWS_DEFAULT_REGION:-us-east-1}}"
 
-export VAULT_ADDR=https://vault.defn.sh
-export CONSUL_HTTP_ADDR=https://consul.defn.sh
+export VAULT_ADDR=https://vault.whoa.bot
+export CONSUL_HTTP_ADDR=https://consul.whoa.bot
 
 export NODEJS_CHECK_SIGNATURES=no
 
