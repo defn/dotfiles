@@ -12,6 +12,7 @@ function profile {
     export AWS_DEFAULT_REGION="$2"
     export AWS_REGION="$2"
   fi
+  reset
 }
 
 function renew {
