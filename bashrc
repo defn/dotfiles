@@ -16,8 +16,8 @@ function profile {
 }
 
 function renew {
-  if [[ -n "${1:-}" ]]; then
-    profile "$1"
+  if [[ "$#" -gt 0 ]]; then
+    profile "$@"
   fi
   eval $(aws-okta env "aws-${AWS_PROFILE}")
 }
