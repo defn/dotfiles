@@ -7,6 +7,12 @@ function vi {
 }
 
 function profile {
+  if [[ "$#" == 0 ]]; then
+    unset AWS_PROFILE AWS_DEFAULT_REGION AWS_REGION
+    reset
+    return 0
+  fi
+
   export AWS_PROFILE="$1"
 
   if [[ -n "${2:-}" ]]; then
