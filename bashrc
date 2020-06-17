@@ -9,7 +9,7 @@ function vi {
 function profile {
   if [[ "$#" == 0 ]]; then
     unset AWS_PROFILE AWS_DEFAULT_REGION AWS_REGION
-    reset
+    reset-aws
     return 0
   fi
 
@@ -27,7 +27,7 @@ function profile {
     fi
   fi
 
-  reset
+  reset-aws
 }
 
 function renew {
@@ -52,7 +52,7 @@ function renew {
   fi
 }
 
-function reset {
+function reset-aws {
   unset \
     AWS_ACCESS_KEY_ID \
     AWS_OKTA_ASSUMED_ROLE \
@@ -127,7 +127,7 @@ function render_ps1 {
 
 function update_ps1 {
   if expired; then
-    reset
+    reset-aws
   fi
   PS1="$(render_ps1 | adjust_ps1)"
 }
