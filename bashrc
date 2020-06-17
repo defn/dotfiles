@@ -31,12 +31,10 @@ function profile {
 }
 
 function renew {
-  case "$#" in
-    1)
-      profile "$1"
-      shift
-      ;;
-  esac
+  if [[ "$#" -gt 0 ]]; then
+    profile "$1"
+    shift
+  fi
 
   eval $( 
     $(aws configure get credential_process) | jq -r '"export AWS_ACCESS_KEY_ID=\(.AccessKeyId) AWS_SECRET_ACCESS_KEY=\(.SecretAccessKey) AWS_SESSION_TOKEN=\(.SessionToken)"'
