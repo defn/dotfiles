@@ -25,9 +25,16 @@ function profile {
 }
 
 function renew {
-  if [[ "$#" -gt 0 ]]; then
-    profile "$@"
-  fi
+  case "$#" in
+    1)
+      profile "$1"
+      shift
+      ;;
+    2)
+      profile "$1" "$2"
+      shift; shift
+      ;;
+  esac
 
   eval $( 
     $(aws configure get credential_process) | jq -r '"export AWS_ACCESS_KEY_ID=\(.AccessKeyId) AWS_SECRET_ACCESS_KEY=\(.SecretAccessKey) AWS_SESSION_TOKEN=\(.SessionToken)"'
@@ -38,7 +45,11 @@ function renew {
     export AWS_REGION="${region}" AWS_DEFAULT_REGION="${region}"
   else
     export AWS_REGION="us-east-1" AWS_DEFAULT_REGION="us-east-1"
- fi
+  fi
+
+  if [[ "$#" -gt 0 ]]; then
+   "$@"
+  fi
 }
 
 function reset {
