@@ -36,10 +36,6 @@ function renew {
       profile "$1"
       shift
       ;;
-    2)
-      profile "$1" "$2"
-      shift; shift
-      ;;
   esac
 
   eval $( 
