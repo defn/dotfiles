@@ -8,10 +8,19 @@ function vi {
 
 function profile {
   export AWS_PROFILE="$1"
+
   if [[ -n "${2:-}" ]]; then
     export AWS_DEFAULT_REGION="$2"
     export AWS_REGION="$2"
+  else
+    local region="$(unset AWS_DEFAULT_REGION AWS_REGION; aws configure get region)"
+    if [[ -n "${region}" ]]; then
+      export AWS_REGION="${region}" AWS_DEFAULT_REGION="${region}"
+    else
+      export AWS_REGION="us-east-1" AWS_DEFAULT_REGION="us-east-1"
+    fi
   fi
+
   reset
 }
 
@@ -19,7 +28,17 @@ function renew {
   if [[ "$#" -gt 0 ]]; then
     profile "$@"
   fi
-  eval $(aws-okta env "aws-${AWS_PROFILE}")
+
+  eval $( 
+    $(aws configure get credential_process) | jq -r '"export AWS_ACCESS_KEY_ID=\(.AccessKeyId) AWS_SECRET_ACCESS_KEY=\(.SecretAccessKey) AWS_SESSION_TOKEN=\(.SessionToken)"'
+  )
+
+  local region="$(unset AWS_DEFAULT_REGION AWS_REGION; aws configure --profile fogg-security-us-west-1 get region)"
+  if [[ -n "${region}" ]]; then
+    export AWS_REGION="${region}" AWS_DEFAULT_REGION="${region}"
+  else
+    export AWS_REGION="us-east-1" AWS_DEFAULT_REGION="us-east-1"
+ fi
 }
 
 function reset {
