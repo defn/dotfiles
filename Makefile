@@ -13,7 +13,7 @@ upgrade:
 	ln -nfs ../.dotfiles/gnupg/pubring.kbx .gnupg/pubring.kbx
 	ln -nfs ../.dotfiles/gnupg/trustdb.gpg .gnupg/trustdb.gpg
 	mkdir -p .aws
-	if [[ -e /usr/local/bin/pass-vault-helper ]]; then \
+	if [[ ! -e /usr/local/bin/pass-vault-helper ]]; then \
 		if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then \
 			ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper || sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
 		fi; \
