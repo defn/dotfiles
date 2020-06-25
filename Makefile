@@ -13,7 +13,11 @@ upgrade:
 	ln -nfs ../.dotfiles/gnupg/pubring.kbx .gnupg/pubring.kbx
 	ln -nfs ../.dotfiles/gnupg/trustdb.gpg .gnupg/trustdb.gpg
 	mkdir -p .aws
-	if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper || sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
+	if [[ -e /usr/local/bin/pass-vault-helper ]]; then \
+		if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then \
+			ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper || sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
+		fi; \
+	fi
 	(cat .docker/config.json 2>/dev/null || echo '{}') | jq -S '. + {credsStore: "pass"}' > .docker/config.json.1
 	mv .docker/config.json.1 .docker/config.json
 	if test "$(shell uname -s)" = "Linux"; then \
