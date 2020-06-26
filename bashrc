@@ -40,7 +40,7 @@ function renew {
     $(aws configure get credential_process) | jq -r '"export AWS_ACCESS_KEY_ID=\(.AccessKeyId) AWS_SECRET_ACCESS_KEY=\(.SecretAccessKey) AWS_SESSION_TOKEN=\(.SessionToken)"'
   )
 
-  local region="$(unset AWS_DEFAULT_REGION AWS_REGION; aws configure --profile fogg-security-us-west-1 get region)"
+  local region="$(unset AWS_DEFAULT_REGION AWS_REGION; aws configure --profile "${AWS_PROFILE}" get region)"
   if [[ -n "${region}" ]]; then
     export AWS_REGION="${region}" AWS_DEFAULT_REGION="${region}"
   else
