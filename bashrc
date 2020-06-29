@@ -78,6 +78,7 @@ function reload-gpg {
   export GPG_TTY=$(tty)
   gpg-connect-agent updatestartuptty /bye >/dev/null
   gpg --card-status
+  unset GPG_TTY
 }
 
 function adjust_ps1 {
@@ -168,6 +169,8 @@ export LC_COLLATE=C
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US:en
 unset LC_ALL
+
+unset GPG_TTY
 
 if type -P vim >/dev/null; then
   export EDITOR="$(which vim)"
