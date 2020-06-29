@@ -75,10 +75,8 @@ function reload {
 }
 
 function reload-gpg {
-  export GPG_TTY=$(tty)
-  gpg-connect-agent updatestartuptty /bye >/dev/null
+  env GPG_TTY=$(tty) gpg-connect-agent updatestartuptty /bye >/dev/null
   gpg --card-status
-  unset GPG_TTY
 }
 
 function adjust_ps1 {
