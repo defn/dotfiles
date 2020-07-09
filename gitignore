@@ -85,6 +85,7 @@ tmp/
 .cookiecutters/
 .wget-hsts
 .getenvoy
+home/
 
 # cypress
 cypress/plugins/
