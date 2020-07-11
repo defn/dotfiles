@@ -3,6 +3,7 @@ work
 .dotfiles
 .gitconfig
 .aws/config
+.aws/credentials
 .aws/cli/cache
 .bashrc.site
 .password-store
