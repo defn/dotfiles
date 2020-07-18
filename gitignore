@@ -87,6 +87,8 @@ tmp/
 .wget-hsts
 .getenvoy
 home/
+.npmrc
+.pip/pip.conf
 
 # cypress
 cypress/plugins/
@@ -94,4 +96,3 @@ cypress/support/
 cypress/videos/
 cypress/fixtures/
 .pki
-
