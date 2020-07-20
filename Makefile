@@ -3,6 +3,7 @@ SHELL := bash
 update:
 	if [[ -f /cache/.npmrc ]]; then ln -nfs /cache/.npmrc .; fi
 	if [[ -f /cache/.pip/pip.conf ]]; then mkdir -p .pip; ln -nfs /cache/.pip/pip.conf .pip/; fi
+	if [[ -f /etc/apt//trusted.gpg.d/debian-archive-buster-stable.gpg ]]; then apt update; apt install -y ca-certificates; sed 's#http://deb.debian.org/debian#https://nexus.defn.sh/repository/debian#; s#http://security.debian.org/debian-security#https://nexus.defn.sh/repository/debian-security#' -i /etc/apt/sources.list; fi
 
 upgrade:
 	ln -nfs .dotfiles/bashrc .bashrc.site
