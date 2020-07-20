@@ -1,7 +1,8 @@
 SHELL := bash
 
 update:
-	@true
+	if [[ -f /cache/.npmrc ]]; then ln -nfs /cache/.npmrc .; fi
+	if [[ -f /cache/.pip/pip.conf ]]; then mkdir -p .pip; ln -nfs /cache/.pip/pip.conf .pip/; fi
 
 upgrade:
 	ln -nfs .dotfiles/bashrc .bashrc.site
