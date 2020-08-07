@@ -6,7 +6,7 @@ update:
 
 upgrade:
 	ln -nfs .dotfiles/bashrc .bashrc.site
-	ln -nfs .dotfiles/gitconfig .gitconfig
+	if [[ ! -f .gitconfig ]]; then cp .dotfiles/gitconfig .gitconfig; fi
 	ln -nfs .dotfiles/gitignore .gitignore
 	mkdir -p .ssh && chmod 700 .ssh
 	echo "@cert-authority * $(shell cat .dotfiles/trusted-user-ca-keys.pem)"  >> .ssh/known_hosts
