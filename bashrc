@@ -6,6 +6,15 @@ function vi {
   fi
 }
 
+function ws {
+  if [[ "$#" == 0 ]]; then
+    terraform workspace list | awk '{print $NF}' | grep -v default | sort
+    return 0
+  fi
+
+  terraform workspace select "$@"
+}
+
 function profile {
   if [[ "$#" == 0 ]]; then
     unset AWS_PROFILE AWS_DEFAULT_REGION AWS_REGION
