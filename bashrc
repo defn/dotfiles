@@ -117,6 +117,10 @@ function render_ps1 {
     PS1_VAR="${TMUX_PANE}${PS1_VAR:+ ${PS1_VAR}}"
   fi
 
+  if [[ -f ".terraform/environment" ]]; then
+    PS1_VAR="_$(cat .terraform/environment)_${PS1_VAR:+ ${PS1_VAR}}"
+  fi
+
   echo
   powerline-go -error "$ec" --colorize-hostname -cwd-mode plain -mode flat -newline \
     -priority root,cwd,user,host,ssh,perms,git-branch,exit,cwd-path,git-status \
