@@ -166,12 +166,14 @@ export AWS_REGION="${AWS_REGION:-us-east-1}"
 export AWS_DEFAULT_REGION="${AWS_REGION:-${AWS_DEFAULT_REGION:-us-east-1}}"
 
 export VAULT_ADDR=https://vault.defn.sh
+export CONSUL_HTTP_ADDR=https://consul.defn.sh
 
+export CHECKPOINT_DISABLE=1
 export NODEJS_CHECK_SIGNATURES=no
 
-export KUBECTX_IGNORE_FZF=1
-
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+
+export KUBECTX_IGNORE_FZF=1
 
 export TERM=xterm-256color
 export TERM_PROGRAM=iTerm.app
