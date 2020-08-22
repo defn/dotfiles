@@ -170,6 +170,7 @@ export CONSUL_HTTP_ADDR=https://consul.defn.sh
 
 export CHECKPOINT_DISABLE=1
 export NODEJS_CHECK_SIGNATURES=no
+export SAM_CLI_TELEMETRY=0
 
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
