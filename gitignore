@@ -89,6 +89,7 @@ tmp/
 home/
 .npmrc
 .pip/pip.conf
+.aws-sam
 
 # cypress
 cypress/plugins/
