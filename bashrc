@@ -1,3 +1,6 @@
+ANSI_ESC=$'\033'
+ANSI_CSI="${ANSI_ESC}["
+
 function vi {
   if type -P vim >/dev/null; then
     command vim "$@"
@@ -140,6 +143,8 @@ function render_ps1 {
     PS1_VAR="_$(cat .terraform/environment)_${PS1_VAR:+ ${PS1_VAR}}"
   fi
 
+  PS1_VAR="${PS1_VAR} $(printf '%s49m' "$ANSI_CSI")"
+
   echo
   powerline-go -error "$ec" --colorize-hostname -cwd-mode plain -mode flat -newline \
     -priority root,cwd,user,host,ssh,perms,git-branch,exit,cwd-path,git-status \
@@ -151,7 +156,7 @@ function update_ps1 {
   if expired; then
     reset-aws
   fi
-  PS1="$(render_ps1 | adjust_ps1)"
+  PS1="$(render_ps1)"
 }
 
 if [[ -f ~/.env ]]; then
