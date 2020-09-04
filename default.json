@@ -29,7 +29,7 @@
   "JobsFg": 39,
   "JobsBg": 238,
   "CmdPassedFg": 15,
-  "CmdPassedBg": 236,
+  "CmdPassedBg": 0,
   "CmdFailedFg": 15,
   "CmdFailedBg": 161,
   "SvnChangesFg": 22,
