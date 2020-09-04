@@ -28,11 +28,16 @@ function profile {
     export AWS_DEFAULT_REGION="$2"
     export AWS_REGION="$2"
   else
-    local region="$(unset AWS_DEFAULT_REGION AWS_REGION; aws configure get region)"
+    local region="$(unset AWS_DEFAULT_REGION AWS_REGION; aws configure --profile "${AWS_PROFILE}" get region)"
     if [[ -n "${region}" ]]; then
       export AWS_REGION="${region}" AWS_DEFAULT_REGION="${region}"
     else
-      export AWS_REGION="us-east-1" AWS_DEFAULT_REGION="us-east-1"
+      region="$(unset AWS_DEFAULT_REGION AWS_REGION; aws configure --profile "default" get region)"
+      if [[ -n "${region}" ]]; then
+        export AWS_REGION="${region}" AWS_DEFAULT_REGION="${region}"
+      else
+        export AWS_REGION="us-east-1" AWS_DEFAULT_REGION="us-east-1"
+      fi
     fi
   fi
 
@@ -53,7 +58,12 @@ function renew {
   if [[ -n "${region}" ]]; then
     export AWS_REGION="${region}" AWS_DEFAULT_REGION="${region}"
   else
-    export AWS_REGION="us-east-1" AWS_DEFAULT_REGION="us-east-1"
+    region="$(unset AWS_DEFAULT_REGION AWS_REGION; aws configure --profile "default" get region)"
+    if [[ -n "${region}" ]]; then
+      export AWS_REGION="${region}" AWS_DEFAULT_REGION="${region}"
+    else
+      export AWS_REGION="us-east-1" AWS_DEFAULT_REGION="us-east-1"
+    fi
   fi
 
   if [[ "$#" -gt 0 ]]; then
