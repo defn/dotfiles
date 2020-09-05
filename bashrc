@@ -146,9 +146,10 @@ function render_ps1 {
   PS1_VAR="${PS1_VAR} $(printf '%s49m' "$ANSI_CSI")"
 
   echo
-  powerline-go -error "$ec" --colorize-hostname -cwd-mode plain -mode flat -newline \
+  powerline-go -error "$ec" --colorize-hostname -mode flat -newline \
     -priority root,cwd,user,host,ssh,perms,git-branch,exit,cwd-path,git-status \
     -modules host,ssh,cwd,perms,gitlite,load,exit${PS1_VAR:+,shell-var --shell-var PS1_VAR} \
+    -path-aliases /efs=efs,/home/boot=\~ \
     -theme ~/.dotfiles/default.json
 }
 
