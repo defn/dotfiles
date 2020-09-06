@@ -102,3 +102,5 @@ cypress/fixtures/
 .dlv
 /go.mod
 /go.sum
+
+.irb_history
