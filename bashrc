@@ -181,6 +181,10 @@ export AWS_SDK_LOAD_CONFIG=1
 export AWS_REGION="${AWS_REGION:-us-east-1}"
 export AWS_DEFAULT_REGION="${AWS_REGION:-${AWS_DEFAULT_REGION:-us-east-1}}"
 
+if [[ -z "${AWS_PROFILE:-}" && -d /efs ]]; then
+  profile chamber-0
+fi
+
 if [[ -f /etc/aws.env ]]; then
   set -a
   source /etc/aws.env
