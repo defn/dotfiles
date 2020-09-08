@@ -16,7 +16,7 @@ work
 .gnupg/S.gpg-agent
 
 # python
-venv
+venv*
 virtualenv
 __pycache__/
 .python_history
