@@ -10,7 +10,8 @@
   insteadOf = ssh://git@github.com/
   insteadOf = git@github.com:
 [credential]
-	helper = !aws codecommit credential-helper $@
+	helper = pass
 	UseHttpPath = true
 [pull]
 	rebase = false
+
