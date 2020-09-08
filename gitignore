@@ -100,7 +100,6 @@ cypress/fixtures/
 
 # go
 .dlv
-/go.mod
-/go.sum
 
 .irb_history
+.postman
