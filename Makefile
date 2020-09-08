@@ -5,8 +5,6 @@ update:
 	if [[ -f /cache/.pip/pip.conf ]]; then mkdir -p .pip; ln -nfs /cache/.pip/pip.conf .pip/; fi
 
 upgrade:
-	if [[ -d /efs/password-store ]]; then ln -nfs /efs/password-store .password-store; fi
-	if [[ ! -f .env ]]; then ln -nfs .password-store/.env .; fi
 	ln -nfs .dotfiles/bashrc .bashrc.site
 	if [[ ! -f .gitconfig ]]; then cp .dotfiles/gitconfig .gitconfig; fi
 	ln -nfs .dotfiles/gitignore .gitignore
