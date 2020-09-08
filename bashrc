@@ -182,7 +182,7 @@ export AWS_REGION="${AWS_REGION:-us-east-1}"
 export AWS_DEFAULT_REGION="${AWS_REGION:-${AWS_DEFAULT_REGION:-us-east-1}}"
 
 if [[ -z "${AWS_PROFILE:-}" && -d /efs ]]; then
-  profile chamber-0
+  export AWS_PROFILE="chamber-0"
 fi
 
 if [[ -f /etc/aws.env ]]; then
