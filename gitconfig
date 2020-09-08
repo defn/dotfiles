@@ -12,6 +12,7 @@
 [credential]
 	helper = pass
 	UseHttpPath = true
+  username = defn
 [pull]
 	rebase = false
 
