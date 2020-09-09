@@ -38,8 +38,6 @@ function profile {
       region="$(unset AWS_DEFAULT_REGION AWS_REGION; aws configure --profile "default" get region)"
       if [[ -n "${region}" ]]; then
         export AWS_REGION="${region}" AWS_DEFAULT_REGION="${region}"
-      else
-        export AWS_REGION="us-east-1" AWS_DEFAULT_REGION="us-east-1"
       fi
     fi
   fi
@@ -64,8 +62,6 @@ function renew {
     region="$(unset AWS_DEFAULT_REGION AWS_REGION; aws configure --profile "default" get region)"
     if [[ -n "${region}" ]]; then
       export AWS_REGION="${region}" AWS_DEFAULT_REGION="${region}"
-    else
-      export AWS_REGION="us-east-1" AWS_DEFAULT_REGION="us-east-1"
     fi
   fi
 
@@ -178,12 +174,6 @@ export AWS_OKTA_MFA_PROVIDER=OKTA
 export AWS_OKTA_MFA_FACTOR_TYPE=push
 
 export AWS_SDK_LOAD_CONFIG=1
-export AWS_REGION="${AWS_REGION:-us-east-1}"
-export AWS_DEFAULT_REGION="${AWS_REGION:-${AWS_DEFAULT_REGION:-us-east-1}}"
-
-if [[ -z "${AWS_PROFILE:-}" && -d /efs ]]; then
-  export AWS_PROFILE="chamber-0"
-fi
 
 if [[ -f /etc/aws.env ]]; then
   set -a
