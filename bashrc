@@ -217,6 +217,11 @@ unset LC_ALL
 
 unset GPG_TTY
 
+export AWS_VAULT_BACKEND=pass
+export AWS_VAULT_PASS_PASSWORD_STORE_DIR="$HOME/.password-store"
+export AWS_VAULT_PASS_CMD=pass
+export AWS_VAULT_PASS_PREFIX=aws-vault-
+
 if type -P vim >/dev/null; then
   export EDITOR="$(which vim)"
 else
