@@ -221,6 +221,7 @@ export AWS_VAULT_BACKEND=pass
 export AWS_VAULT_PASS_PASSWORD_STORE_DIR="$HOME/.password-store"
 export AWS_VAULT_PASS_CMD=pass
 export AWS_VAULT_PASS_PREFIX=aws-vault
+export PASS_OATH_CREDENTIAL_NAME=aws-vault-totp
 
 if type -P vim >/dev/null; then
   export EDITOR="$(which vim)"
