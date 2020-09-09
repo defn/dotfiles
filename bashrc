@@ -189,11 +189,6 @@ export NODEJS_CHECK_SIGNATURES=no
 export SAM_CLI_TELEMETRY=0
 
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
-if [[ -d /efs ]]; then
-  export TF_PLUGIN_CACHE_DIR="/efs/.terraform.d/plugin-cache"
-fi
-
-export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
 export KUBECTX_IGNORE_FZF=1
 
