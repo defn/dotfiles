@@ -2,11 +2,14 @@ SHELL := bash
 
 update:
 	if [[ -f /cache/.npmrc ]]; then ln -nfs /cache/.npmrc .; fi
+	if [[ -f /efs/.npmrc ]]; then ln -nfs /efs/.npmrc .; fi
 	if [[ -f /cache/.pip/pip.conf ]]; then mkdir -p .pip; ln -nfs /cache/.pip/pip.conf .pip/; fi
+	if [[ -f /efs/.pip/pip.conf ]]; then mkdir -p .pip; ln -nfs /efs/.pip/pip.conf .pip/; fi
 
 upgrade:
 	ln -nfs .dotfiles/bashrc .bashrc.site
 	if [[ ! -f .gitconfig ]]; then cp .dotfiles/gitconfig .gitconfig; fi
+	if [[ -f /efs/.gitconfig ]]; then cp /efs/.gitconfig .gitconfig; fi
 	ln -nfs .dotfiles/gitignore .gitignore
 	mkdir -p .ssh && chmod 700 .ssh
 	echo "@cert-authority * $(shell cat .dotfiles/trusted-user-ca-keys.pem)"  >> .ssh/known_hosts
