@@ -208,6 +208,8 @@ export AWS_VAULT_PASS_CMD=pass
 export AWS_VAULT_PASS_PREFIX=aws-vault
 export PASS_OATH_CREDENTIAL_NAME=aws-vault-totp
 
+export PIP_REQUIRE_VIRTUALENV=1
+
 if type -P vim >/dev/null; then
   export EDITOR="$(which vim)"
 else
