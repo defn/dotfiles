@@ -24,7 +24,6 @@ upgrade:
 	fi
 	(cat .docker/config.json 2>/dev/null || echo '{}') | jq -S '. + {credsStore: "pass"}' > .docker/config.json.1
 	mv .docker/config.json.1 .docker/config.json
-	rm -f /usr/local/bin/kubectl
 	rm -f .profile
 
 install:
