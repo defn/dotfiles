@@ -26,6 +26,7 @@ function profile {
   fi
 
   export AWS_PROFILE="$1"
+  export AWS_METADATA_URL=http://lol.lol # until everything is on Terraform 0.13
 
   if [[ -n "${2:-}" ]]; then
     export AWS_DEFAULT_REGION="$2"
