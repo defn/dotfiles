@@ -22,6 +22,7 @@ upgrade:
 			ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper || sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
 		fi; \
 	fi
+	mkdir -p .docker
 	(cat .docker/config.json 2>/dev/null || echo '{}') | jq -S '. + {credsStore: "pass"}' > .docker/config.json.1
 	mv .docker/config.json.1 .docker/config.json
 	rm -f .profile
