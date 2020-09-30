@@ -106,3 +106,4 @@ cypress/fixtures/
 
 .kumactl
 .acme.sh
+.windmill
