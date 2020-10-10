@@ -108,3 +108,4 @@ cypress/fixtures/
 .acme.sh
 .windmill
 .pytest-kind/
+.bundle
