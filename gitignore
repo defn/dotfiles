@@ -109,4 +109,4 @@ cypress/fixtures/
 .windmill
 .pytest-kind/
 .bundle
-/vendor
+.vendor
