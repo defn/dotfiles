@@ -110,3 +110,4 @@ cypress/fixtures/
 .pytest-kind/
 .bundle
 .vendor
+.fly
