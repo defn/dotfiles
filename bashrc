@@ -18,6 +18,10 @@ function ws {
   terraform workspace select "$@"
 }
 
+function gs {
+  ~/bin/gs "$@"
+}
+
 function profile {
   if [[ "$#" == 0 ]]; then
     unset AWS_PROFILE AWS_DEFAULT_REGION AWS_REGION
