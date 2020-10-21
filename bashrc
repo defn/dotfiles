@@ -186,9 +186,6 @@ if [[ -f /etc/aws.env ]]; then
   set +a
 fi
 
-export VAULT_ADDR=https://vault.${KITT_DOMAIN}
-export CONSUL_HTTP_ADDR=https://consul.${KITT_DOMAIN}
-
 export CHECKPOINT_DISABLE=1
 export NODEJS_CHECK_SIGNATURES=no
 export SAM_CLI_TELEMETRY=0
