@@ -112,3 +112,4 @@ cypress/fixtures/
 .vendor
 .fly
 .vscode
+config.json
