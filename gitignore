@@ -113,3 +113,4 @@ cypress/fixtures/
 .fly
 .vscode
 config.json
+.talon
