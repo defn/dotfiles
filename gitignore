@@ -114,3 +114,4 @@ cypress/fixtures/
 .vscode
 config.json
 .talon
+/go
