@@ -116,3 +116,4 @@ config.json
 .talon
 /go
 .sudo_as_admin_successful
+/snap
