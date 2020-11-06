@@ -25,6 +25,7 @@
 [delta]
     features = side-by-side line-numbers decorations
     whitespace-error-style = 22 reverse
+    syntax-theme = Monokai Extended
 
 [delta "decorations"]
     commit-decoration-style = yellow box ul

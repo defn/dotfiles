@@ -196,6 +196,7 @@ export KUBECTX_IGNORE_FZF=1
 
 export TERM=xterm-256color
 export TERM_PROGRAM=iTerm.app
+export BAT_THEME="Monokai Extended"
 
 export LC_COLLATE=C
 export LANG=en_US.UTF-8
